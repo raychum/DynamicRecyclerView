@@ -40,7 +40,7 @@ public class MainFragment extends Fragment {
         adapter = new MainAdapter();
         recyclerView.setAdapter(adapter);
         editText = (EditText) rootView.findViewById(R.id.edittext);
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 20; i++) {
             adapter.addItem(new Item(i));
         }
         rootView.findViewById(R.id.button_show).setOnClickListener(new View.OnClickListener() {
@@ -77,7 +77,7 @@ public class MainFragment extends Fragment {
                         break;
                 }
             }
-        },intentFilter);
+        }, intentFilter);
     }
 
     @Override

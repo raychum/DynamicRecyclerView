@@ -13,7 +13,7 @@ import android.widget.TextView;
 /**
  * Created by raychum on 30/6/15.
  */
-public class ChildFragment extends Fragment{
+public class ChildFragment extends Fragment {
 
     public static final String ACTION_VISIBILITY = "ACTION_VISIBILITY";
     public static final String POSITION_KEY = "POSITION_KEY";
@@ -29,7 +29,7 @@ public class ChildFragment extends Fragment{
     public static ChildFragment newInstance(int position) {
         ChildFragment fragment = new ChildFragment();
         Bundle args = new Bundle();
-        args.putInt(POSITION_KEY,position);
+        args.putInt(POSITION_KEY, position);
         fragment.setArguments(args);
         return fragment;
     }
