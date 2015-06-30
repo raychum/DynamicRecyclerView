@@ -5,14 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 /**
  * Created by raychum on 30/6/15.
@@ -26,16 +22,16 @@ public class ChildFragment extends Fragment{
     private TextView textView;
     private int position;
 
+    public ChildFragment() {
+        // Required empty public constructor
+    }
+
     public static ChildFragment newInstance(int position) {
         ChildFragment fragment = new ChildFragment();
         Bundle args = new Bundle();
         args.putInt(POSITION_KEY,position);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public ChildFragment() {
-        // Required empty public constructor
     }
 
     @Nullable
@@ -52,6 +48,16 @@ public class ChildFragment extends Fragment{
                 intent.putExtra(VISIBILITY_KEY, false);
                 intent.putExtra(POSITION_KEY, position);
                 LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intent);
+
+                rootView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Intent intent = new Intent(ACTION_VISIBILITY);
+                        intent.putExtra(VISIBILITY_KEY, true);
+                        intent.putExtra(POSITION_KEY, position);
+                        LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intent);
+                    }
+                }, 3000);
             }
         });
         return rootView;
