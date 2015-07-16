@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by raychum on 30/6/15.
@@ -35,12 +36,12 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
-        layoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new MainAdapter();
         recyclerView.setAdapter(adapter);
         editText = (EditText) rootView.findViewById(R.id.edittext);
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 40; i++) {
             adapter.addItem(new Item(i));
         }
         rootView.findViewById(R.id.button_show).setOnClickListener(new View.OnClickListener() {
@@ -109,6 +110,7 @@ public class MainFragment extends Fragment {
             if (itemDisplayList.get(position).getFragment() == null) {
                 itemDisplayList.get(position).initFragment(getChildFragmentManager(), position);
             }
+            viewHolder.itemView.getLayoutParams().height = (new Random().nextInt(3) + 1) * 200;
         }
 
         @Override

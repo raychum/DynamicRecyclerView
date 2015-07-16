@@ -57,7 +57,7 @@ public class ChildFragment extends Fragment {
                         intent.putExtra(POSITION_KEY, position);
                         LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intent);
                     }
-                }, 3000);
+                }, 5000);
             }
         });
         return rootView;
